@@ -7,3 +7,6 @@ console.log("javascript review")
 // destructuring
 // spred operator
 // ternary operator
+// promise
+// async await
+// modular js import export
