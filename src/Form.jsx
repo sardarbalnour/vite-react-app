@@ -1,11 +1,35 @@
+import { useState } from "react";
+
 function Form() {
-  const loginHandler = (event) => {
-    console.log(event.target.innerText)
-    console.log("first")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const loginHandler = () => {
+    console.log({ email, password });
+  };
+
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const passwordHandler = (event) => {
+    setPassword(event.target.value);
   };
 
   return (
     <div>
+      <input
+        type="email"
+        placeholder="Enter your email address : "
+        value={email}
+        onChange={emailHandler}
+      />
+      <input
+        type="password"
+        placeholder="Enter password : "
+        value={password}
+        onChange={passwordHandler}
+      />
       <button onClick={loginHandler}>Login</button>
     </div>
   );
