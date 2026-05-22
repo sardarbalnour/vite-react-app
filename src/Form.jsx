@@ -5,9 +5,10 @@ function Form() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
   const [gender, setGender] = useState("male");
+  const [check, setCheck] = useState(false);
 
   const loginHandler = () => {
-    console.log({ email, password, role, gender });
+    console.log({ email, password, role, gender, check });
   };
 
   const emailHandler = (event) => {
@@ -24,6 +25,10 @@ function Form() {
 
   const genderHandler = (event) => {
     setGender(event.target.value);
+  };
+
+  const checkHandler = () => {
+    setCheck((check) => !check);
   };
 
   return (
@@ -76,6 +81,7 @@ function Form() {
           checked={gender === "other"}
         />
       </div>
+      <input type="checkbox" checked={check} onChange={checkHandler} />
       <button onClick={loginHandler}>Login</button>
     </div>
   );
