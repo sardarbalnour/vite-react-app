@@ -4,9 +4,10 @@ function Form() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
+  const [gender, setGender] = useState("male");
 
   const loginHandler = () => {
-    console.log({ email, password, role });
+    console.log({ email, password, role, gender });
   };
 
   const emailHandler = (event) => {
@@ -19,6 +20,10 @@ function Form() {
 
   const selectHandler = (event) => {
     setRole(event.target.value);
+  };
+
+  const genderHandler = (event) => {
+    setGender(event.target.value);
   };
 
   return (
@@ -40,6 +45,37 @@ function Form() {
         <option value="user">User</option>
         <option value="writer">Writer</option>
       </select>
+      <div>
+        {/* name of all radiobuttons are equal in order to user just can select one option */}
+        <label htmlFor="male">Male</label>
+        {/* id should be equal to htmlfor in order to when we click on the label the radiobutton be selected */}
+        <input
+          type="radio"
+          name="gender"
+          id="male"
+          value="male"
+          onChange={genderHandler}
+          checked={gender === "male"}
+        />
+        <label htmlFor="female">Female</label>
+        <input
+          type="radio"
+          name="gender"
+          id="female"
+          value="female"
+          onChange={genderHandler}
+          checked={gender === "female"}
+        />
+        <label htmlFor="other">Other</label>
+        <input
+          type="radio"
+          name="gender"
+          id="other"
+          value="other"
+          onChange={genderHandler}
+          checked={gender === "other"}
+        />
+      </div>
       <button onClick={loginHandler}>Login</button>
     </div>
   );
