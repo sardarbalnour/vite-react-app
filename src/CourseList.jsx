@@ -1,4 +1,5 @@
 import CourseCard from "./CourseCard";
+import styles from "./CourseList.module.css";
 
 function CourseList() {
   const courses = [
@@ -7,12 +8,13 @@ function CourseList() {
     { id: 3, name: "css", description: "this is css course" },
     { id: 4, name: "next", description: "this is next course" },
   ];
+
   return (
     <>
       <h3>CourseList</h3>
-      <ul>
+      <ul className={styles.container}>
         {courses.map((course) => (
-          <CourseCard key={course.id} data={course}/>
+          <CourseCard key={course.id} data={course} />
         ))}
       </ul>
     </>
@@ -20,5 +22,3 @@ function CourseList() {
 }
 
 export default CourseList;
-
-// list rendering
