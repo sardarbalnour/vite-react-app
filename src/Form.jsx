@@ -1,51 +1,46 @@
 import { useState } from "react";
 
 function Form() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("user");
-  const [gender, setGender] = useState("male");
-  const [check, setCheck] = useState(false);
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    role: "user",
+    gender: "male",
+    check: false,
+  });
 
   const loginHandler = () => {
-    console.log({ email, password, role, gender, check });
+    console.log(form);
   };
 
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
-  };
+  const changeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
 
-  const passwordHandler = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const selectHandler = (event) => {
-    setRole(event.target.value);
-  };
-
-  const genderHandler = (event) => {
-    setGender(event.target.value);
-  };
-
-  const checkHandler = () => {
-    setCheck((check) => !check);
+    if (name === "check") {
+      setForm((form) => ({ ...form, check: !form.check }));
+    } else {
+      setForm((form) => ({ ...form, [name]: value }));
+    }
   };
 
   return (
     <div>
       <input
         type="email"
+        name="email"
         placeholder="Enter your email address : "
-        value={email}
-        onChange={emailHandler}
+        value={form.email}
+        onChange={changeHandler}
       />
       <input
         type="password"
+        name="password"
         placeholder="Enter password : "
-        value={password}
-        onChange={passwordHandler}
+        value={form.password}
+        onChange={changeHandler}
       />
-      <select value={role} onChange={selectHandler}>
+      <select value={form.role} name="role" onChange={changeHandler}>
         <option value="admin">Admin</option>
         <option value="user">User</option>
         <option value="writer">Writer</option>
@@ -59,8 +54,8 @@ function Form() {
           name="gender"
           id="male"
           value="male"
-          onChange={genderHandler}
-          checked={gender === "male"}
+          onChange={changeHandler}
+          checked={form.gender === "male"}
         />
         <label htmlFor="female">Female</label>
         <input
@@ -68,8 +63,8 @@ function Form() {
           name="gender"
           id="female"
           value="female"
-          onChange={genderHandler}
-          checked={gender === "female"}
+          onChange={changeHandler}
+          checked={form.gender === "female"}
         />
         <label htmlFor="other">Other</label>
         <input
@@ -77,11 +72,16 @@ function Form() {
           name="gender"
           id="other"
           value="other"
-          onChange={genderHandler}
-          checked={gender === "other"}
+          onChange={changeHandler}
+          checked={form.gender === "other"}
         />
       </div>
-      <input type="checkbox" checked={check} onChange={checkHandler} />
+      <input
+        type="checkbox"
+        name="check"
+        checked={form.check}
+        onChange={changeHandler}
+      />
       <button onClick={loginHandler}>Login</button>
     </div>
   );
