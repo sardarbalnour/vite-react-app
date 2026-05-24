@@ -8,14 +8,14 @@ export default function App() {
   const src = "igkgkyuuk";
   return (
     <div>
-      <Form />
+      {/* <Form />
       <Counter />
-      <Header />
+      <Header /> */}
       <Banner title="developing" numOfStudents={300} />
-      <h1>Sardar the dev</h1>
+      {/* <h1>Sardar the dev</h1>
       <CourseList />
       <p>react course</p>
-      <img src={src} alt="" />
+      <img src={src} alt="" /> */}
     </div>
   );
 }
